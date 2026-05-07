@@ -1,5 +1,14 @@
 package com.stockmanager.supplier.exception;
 
-public class SupplierNotFoundException {
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
+@ResponseStatus(HttpStatus.NOT_FOUND)
+public class SupplierNotFoundException extends RuntimeException {
+    public SupplierNotFoundException(Long id) {
+        super("Supplier not found with ID: " + id);
+    }
+    public SupplierNotFoundException(String message) {
+        super(message);
+    }
 }
